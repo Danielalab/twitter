@@ -1,8 +1,20 @@
 
 window.onload = function () {
   var textTweet = document.getElementById('text-tweet').value;
-  document.addEventListener('keyup', countCharacters);
+  document.addEventListener('keyup', countCharacters );
 }
+
+var textarea = document.getElementById('text-tweet');
+
+textarea.addEventListener('keyup', autosize);
+             
+function autosize(){
+  var el = this;
+  setTimeout(function(){
+    el.style.cssText = 'height:' + el.scrollHeight + 'px';
+  },0);
+}
+
 
 var accountantHtml = document.getElementById('accountant');
 var accountant = parseInt(accountantHtml.textContent);

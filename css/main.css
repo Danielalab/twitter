@@ -200,6 +200,7 @@ header li.logo-twitter>a{
   min-height: 15vh;
   margin-top: 2vh; 
   outline: none;
+  overflow: hidden;
   padding: 2%;
   padding-right: 5%; 
   resize: none;
