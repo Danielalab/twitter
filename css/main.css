@@ -197,10 +197,11 @@ header li.logo-twitter>a{
 #user-tweet>form>textarea {
   border: 1px solid #c6e4f7;
   border-radius: 10px;
-  height: 15vh;
+  min-height: 15vh;
   margin-top: 2vh; 
   outline: none;
   padding: 2%;
+  padding-right: 5%; 
   resize: none;
   width: 100%;
 }
@@ -213,9 +214,9 @@ header li.logo-twitter>a{
   min-height: 15vh;
 } */
 
-#user-tweet>form>span {
-  background-color: #1DA1F2;
-  border: 1px solid #1DA1F2;
+#user-tweet>form>span#btn-twittear {
+  background-color: #52b8f3;
+  border: 1px solid #52b8f3;
   border-radius: 15px;
   color: white;
   cursor: pointer;
@@ -223,8 +224,15 @@ header li.logo-twitter>a{
   font-size: 14px;
   margin: 1%;
   margin-bottom: 2%;
-  outline: none; 
   padding: 2% 3%;
+}
+
+#user-tweet>form>span#accountant {
+  color: #949292;
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  left: 70%;
 }
 
 .post-tweet {
@@ -236,7 +244,7 @@ header li.logo-twitter>a{
   width: 100%;   
 }
 
-.post-tweet>h4 , .post-tweet>span{
+.post-tweet>h4 , .post-tweet>p{
   bottom: 10%;
   color : #3f3f3f;
   left: 12.5%;
@@ -247,14 +255,14 @@ header li.logo-twitter>a{
   width: 85%;
 }
 
-.post-tweet>span{
-  font-weight: normal;
-}
-
-.post-tweet>h4>span {
+.post-tweet>h4>span , .post-tweet>p {
   font-weight: normal;
   font-size: 14px;
 } 
+
+.post-tweet>p {
+  overflow: hidden;
+}
 
 .post-tweet>div {
   background-color: #EFEFEF;
