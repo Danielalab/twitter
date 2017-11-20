@@ -5,23 +5,25 @@ window.onload = function () {
 }
 
 
-/*var textarea = document.getElementById('text-tweet');
-textarea.addEventListener('keyup', autosize);
+var textArea = document.getElementById('text-tweet');
+textArea.addEventListener('keyup', autosize);
+textArea.addEventListener('click', autosize);
+
              
 function autosize(evento){
   var eventTextArea = this;
-  if(evento.keyCode === 13 || evento.keyCode === 8 ) {
+  if(evento.keyCode === 13 || evento.keyCode === 8) {
     setTimeout(function(){
       eventTextArea.style.cssText = 'height:' + eventTextArea.scrollHeight + 'px';
     },0);
   }
-  if (checkText(textTweet)) {
+  if (checkText(textArea.value)) {
     setTimeout(function(){
       eventTextArea.style.cssText = 'height:' + eventTextArea.scrollHeight + 'px';
     },0);
-  }
+  } 
 }
-*/
+
 
 var accountantHtml = document.getElementById('accountant');
 var accountant = parseInt(accountantHtml.textContent);
