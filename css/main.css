@@ -261,7 +261,12 @@ header li.logo-twitter>a{
   font-size: 14px;
 } 
 
+#hours {
+  margin-left: 1.5%; 
+}
+
 .post-tweet>p {
+  margin-top: 1%; 
   overflow: hidden;
 }
 

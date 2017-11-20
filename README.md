@@ -22,6 +22,12 @@ Si pasa los 120 caracteres, mostrar el contador con OTRO color.
 Si pasa los 130 caracteres, mostrar el contador con OTRO color.
 Si pasa los 140 caracteres, mostrar el contador en negativo.
 
++ **Versión 0.0.4**  
+Al presionar enter(/n) que crezca el textarea de acuerdo al tamaño del texto.
+
++ **Versión 0.0.5 (Extra)**  
+Si la cantidad de caracteres ingresados (sin dar un enter), supera al tamaño del textarea por defecto, debe de agregarse una línea más para que no aparezca el scroll. 
+
 ### **Detalles del Repositorio**
 
 + Se encuentra una archivo index.html el cual muestra la estructra inicial con la que se inicializa la página web.
