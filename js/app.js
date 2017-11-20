@@ -4,40 +4,82 @@ window.onload = function () {
   document.addEventListener('keyup', countCharacters );
 }
 
-var textarea = document.getElementById('text-tweet');
 
+/*var textarea = document.getElementById('text-tweet');
 textarea.addEventListener('keyup', autosize);
              
-function autosize(){
-  var el = this;
-  setTimeout(function(){
-    el.style.cssText = 'height:' + el.scrollHeight + 'px';
-  },0);
+function autosize(evento){
+  var eventTextArea = this;
+  if(evento.keyCode === 13 || evento.keyCode === 8 ) {
+    setTimeout(function(){
+      eventTextArea.style.cssText = 'height:' + eventTextArea.scrollHeight + 'px';
+    },0);
+  }
+  if (checkText(textTweet)) {
+    setTimeout(function(){
+      eventTextArea.style.cssText = 'height:' + eventTextArea.scrollHeight + 'px';
+    },0);
+  }
 }
-
+*/
 
 var accountantHtml = document.getElementById('accountant');
 var accountant = parseInt(accountantHtml.textContent);
 
 function countCharacters () {
   var textTweet = document.getElementById('text-tweet').value;
-  var remainingCharacters = accountant-textTweet.length;
-  accountantHtml.textContent = remainingCharacters;  
-
-  colorOfTheCounter (remainingCharacters) ;
-
-  if (remainingCharacters === 140 || remainingCharacters <= 0) {
-    var buttonTwittear = document.getElementById('btn-twittear');
-    buttonTwittear.removeEventListener('click' , postTweet);
-    buttonTwittear.style.backgroundColor = '#52b8f3';
-    buttonTwittear.style.border = '1px solid #52b8f3';
+  checkCounter();
+  if (checkText(textTweet)) {
+    var remainingCharacters = accountant-textTweet.length;    
+    checkCounter();
+    if (checkText(textTweet)) {
+      if (remainingCharacters === 140 || remainingCharacters <= 0) {
+        removeEventButtonTwittear() ;
+      } else {
+        addEventButtonTwittear();
+      }  
+    } else {
+      restart();
+    }
   } else {
-    var buttonTwittear = document.getElementById('btn-twittear');
-    buttonTwittear.addEventListener('click' , postTweet);
-    buttonTwittear.style.backgroundColor = '#1DA1F2';
-    buttonTwittear.style.border = '1px solid #1DA1F2';    
+    removeEventButtonTwittear();
   }
+  
+}
 
+function checkCounter() {
+  var textTweet = document.getElementById('text-tweet').value;
+  if (textTweet === '') {
+    accountant = 140;
+    var remainingCharacters = accountant-textTweet.length;  
+    accountantHtml.textContent = remainingCharacters;  
+    colorOfTheCounter (remainingCharacters) ;
+  }
+  if(accountant === 140 && checkText(textTweet)) {
+    var remainingCharacters = accountant-textTweet.length;  
+    accountantHtml.textContent = remainingCharacters;  
+    colorOfTheCounter (remainingCharacters) ;
+  }
+}
+
+function restart() {
+  removeEventButtonTwittear();  
+  countCharacters();   
+}
+
+function addEventButtonTwittear() {
+  var buttonTwittear = document.getElementById('btn-twittear');      
+  buttonTwittear.addEventListener('click' , postTweet);
+  buttonTwittear.style.backgroundColor = '#1DA1F2';
+  buttonTwittear.style.border = '1px solid #1DA1F2';   
+}
+
+
+function removeEventButtonTwittear() {
+  var buttonTwittear = document.getElementById('btn-twittear');  
+  buttonTwittear.removeEventListener('click' , postTweet);
+  buttonTwittear.style.backgroundColor = '#52b8f3';
+  buttonTwittear.style.border = '1px solid #52b8f3';
 }
 
 
@@ -47,7 +89,10 @@ function postTweet () {
   var containerTweet = document.createElement('div');
   containerTweet.innerHTML = '<div><i class="fa fa-user-o"></i></div><h4>Name-user <span>@name_user</span></h4> <p>' + textTweet + '</p>';
   containerTweet.setAttribute('class' , 'post-tweet');
-  tweets.appendChild(containerTweet); 
+  tweets.appendChild(containerTweet);
+  document.getElementById('text-tweet').value = '';
+  removeEventButtonTwittear();  
+  checkCounter();  
 }
 
 
@@ -69,3 +114,12 @@ function colorOfTheCounter (count) {
   }
   
 }
+
+function checkText(array) {
+  for (var index = 0; index < array.length; index++) {
+    if (array[index] !== ' '  && array.charCodeAt(index) !== 10) {
+      return true;
+    }
+  }
+}
+
